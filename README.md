@@ -52,9 +52,10 @@ Você controla um tuktuk, usa poderes especiais, pula obstáculos.
 ## 📅 Progresso
 
 ![Último commit](https://img.shields.io/github/last-commit/MarcosMakosu/sstt?style=flat-square)  
-![Último commit](https://img.shields.io/github/last-commit/emendes19/sstt?style=flat-square)  
+[📅 Ver commits de MarcosMakosu](https://github.com/usuario/sstt/commits?author=MarcosMakosu)  
+[📅 Ver commits de emendes19](https://github.com/usuario/sstt/commits?author=emendes19)
 
 ---
 
 Feito com 💨 e 🛺
-Clube de Regatas  Vasco da Gama
+Clube de Regatas Vasco da Gama
