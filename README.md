@@ -49,10 +49,10 @@ Você controla um tuktuk, usa poderes especiais, pula obstáculos.
 
 ---
 
-## 📅 Progresso Semanal
+## 📅 Progresso
 
 ![Último commit](https://img.shields.io/github/last-commit/MarcosMakosu/sstt?style=flat-square)  
-![Último commit](https://img.shields.io/github/last-commit/MarcosMakosu/sstt?style=flat-square)  
+![Último commit](https://img.shields.io/github/last-commit/emendes19/sstt?style=flat-square)  
 
 ---
 
