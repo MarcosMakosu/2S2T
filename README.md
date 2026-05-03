@@ -44,9 +44,7 @@ Você controla um tuktuk, usa poderes especiais, pula obstáculos.
 | Item           | Detalhe                          |
 |----------------|----------------------------------|
 | Engine         | Godot 4.x                        |
-| Linguagem      | GDScript (ou C# opcional)        |
-| Controle       | Git + commits semanais           |
-
+| Linguagem      | GDScript      |
 ---
 
 ## 📅 Progresso
