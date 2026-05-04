@@ -1,1 +1,5 @@
+WorldEnvironment
+Camera3D
+MeshInstance3D
+Node3D
 CharacterBody3D

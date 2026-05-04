@@ -1,5 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777891943
+::res://::1777900292
 base.obj::Mesh::3470410101580998357::1777891943::1777891947::1::::<><><>0<>0<>71fd22bd5b54a2e8034f1a86935022bf<>res://.godot/imported/base.obj-98588741c750db501e1736bfde42f813.mesh<*>res://.godot/imported/base.obj-98588741c750db501e1736bfde42f813.mesh::
 icon.svg::CompressedTexture2D::7872666595731467602::1777744626::1777744710::1::::<><><>0<>0<>25709811476f625e9f60526fdfeaf7ae<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+node_3d.tscn::PackedScene::5487770393886627273::1777898761::0::1::::<><><>0<>0<><>::uid://bppdfalbpjhe0::::res://base.obj
 README.md::TextFile::-1::1777891145::0::1::::<><><>0<>0<><>::

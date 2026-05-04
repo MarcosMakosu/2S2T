@@ -2,10 +2,43 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bppdfalbpjhe0" path="res://base.obj" id="1_a202f"]
 
-[node name="Node3D" type="Node3D" unique_id=1206941895]
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a202f"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+ambient_light_source = 3
+ssr_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_noarx"]
+
+[sub_resource type="Compositor" id="Compositor_a0tk4"]
+
+[node name="carro" type="Node3D" unique_id=1206941895]
 
 [node name="Base" type="MeshInstance3D" parent="." unique_id=1675832100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09855819, 0, -0.059686303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1562219, 0.660686, -0.57605517)
 mesh = ExtResource("1_a202f")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2075182934]
+
+[node name="Mundo" type="Node3D" parent="." unique_id=41344616]
+
+[node name="Floor" type="MeshInstance3D" parent="Mundo" unique_id=774928053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005271882, 0, 0.0006239414)
+mesh = SubResource("BoxMesh_a202f")
+
+[node name="Camera3D" type="Camera3D" parent="Mundo" unique_id=757432451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1513772, 1.3100506, 2.0087745)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo" unique_id=1123984790]
+environment = SubResource("Environment_a202f")
+camera_attributes = SubResource("CameraAttributesPractical_noarx")
+compositor = SubResource("Compositor_a0tk4")
