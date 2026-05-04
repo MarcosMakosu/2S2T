@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ckgk1n1bjp2yf"]
+
+[ext_resource type="ArrayMesh" uid="uid://bppdfalbpjhe0" path="res://base.obj" id="1_a202f"]
+
+[node name="Node3D" type="Node3D" unique_id=1206941895]
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1675832100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09855819, 0, -0.059686303)
+mesh = ExtResource("1_a202f")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2075182934]
