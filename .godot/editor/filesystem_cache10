@@ -1,6 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1778009685
+::res://::1778097281
 base.obj::Mesh::3470410101580998357::1777891943::1777891947::1::::<><><>0<>0<>71fd22bd5b54a2e8034f1a86935022bf<>res://.godot/imported/base.obj-98588741c750db501e1736bfde42f813.mesh<*>res://.godot/imported/base.obj-98588741c750db501e1736bfde42f813.mesh::
 icon.svg::CompressedTexture2D::7872666595731467602::1778009685::1778009703::1::::<><><>0<>0<>25709811476f625e9f60526fdfeaf7ae<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-node_3d.tscn::PackedScene::5487770393886627273::1778009386::0::1::::<><><>0<>0<><>::uid://bppdfalbpjhe0::::res://base.obj
+node_3d.tscn::PackedScene::5487770393886627273::1778014252::0::1::::<><><>0<>0<><>::uid://bppdfalbpjhe0::::res://base.obj<>uid://oy4380i43hp1::::res://Scrpts/carro.gd
 README.md::TextFile::-1::1777891145::0::1::::<><><>0<>0<><>::
+::res://Scrpts/::1778013965
+carro.gd::GDScript::1034001444343463972::1778013965::0::1::::<>CharacterBody3D<><>0<>0<><>::
+view.gd::GDScript::4370536177096597449::1778097281::0::1::::<>Node3D<><>0<>0<><>::

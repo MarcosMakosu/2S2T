@@ -1,28 +1,36 @@
 extends CharacterBody3D
 
+@export var max_speed := 20.0
+@export var aceleracao := 10.0
+@export var frenagem := 15.0
+@export var giro := 2.5  # velocidade de rotação
+@export var friccao := 5.0
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var velocidade_atual := 0.0
 
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+func _physics_process(delta):
+	var input_acelerar = Input.get_action_strength("move_forward")
+	var input_re = Input.get_action_strength("move_backward")
+	var input_direcao = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	
+	# Aceleração / ré
+	if input_acelerar > 0:
+		velocidade_atual += aceleracao * delta
+	elif input_re > 0:
+		velocidade_atual -= aceleracao * delta
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		# desaceleração natural
+		velocidade_atual = move_toward(velocidade_atual, 0, friccao * delta)
+	
+	# Limite de velocidade
+	velocidade_atual = clamp(velocidade_atual, -max_speed / 2, max_speed)
+	
+	# Rotação (só gira se estiver em movimento)
+	if abs(velocidade_atual) > 0.1:
+		rotate_y(-input_direcao * giro * delta * sign(velocidade_atual))
+	
+	# Movimento para frente baseado na rotação
+	var direcao = -transform.basis.z
+	velocity = direcao * velocidade_atual
+	
 	move_and_slide()

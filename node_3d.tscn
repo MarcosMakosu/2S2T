@@ -2,9 +2,10 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bppdfalbpjhe0" path="res://base.obj" id="1_a202f"]
 [ext_resource type="Script" uid="uid://oy4380i43hp1" path="res://Scrpts/carro.gd" id="2_noarx"]
+[ext_resource type="Script" uid="uid://b3jedexrchqnx" path="res://Scrpts/view.gd" id="3_a0tk4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
-size = Vector3(10, 1, 10)
+size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
 size = Vector3(10, 1, 10)
@@ -43,10 +44,6 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2050176630]
 shape = SubResource("BoxShape3D_noarx")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=757432451]
-transform = Transform3D(-0.735864, -0.21755922, 0.6412271, -0.037367597, 0.9585833, 0.282351, -0.67609763, 0.18381085, -0.7135164, 1.663043, 1.2464546, -1.9355627)
-current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123984790]
 environment = SubResource("Environment_a202f")
@@ -89,9 +86,18 @@ script = ExtResource("2_noarx")
 metadata/_edit_group_ = true
 
 [node name="Base" type="MeshInstance3D" parent="carro" unique_id=853299326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60910535, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.60910535, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="carro" unique_id=485730256]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 1.230706, 0)
 shape = SubResource("BoxShape3D_a202f")
+
+[node name="camera_pivot" type="Node3D" parent="." unique_id=41790847 node_paths=PackedStringArray("alvo")]
+script = ExtResource("3_a0tk4")
+alvo = NodePath("../carro")
+
+[node name="CameraPitch" type="Node3D" parent="camera_pivot" unique_id=303568145]
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot/CameraPitch" unique_id=757432451]
+current = true
