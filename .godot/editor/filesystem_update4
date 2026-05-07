@@ -1,3 +1,2 @@
 res://node_3d.tscn
-res://Scrpts/view.gd
-res://Scrpts/carro.gd
+res://Scrpts/camera_pivot.gd

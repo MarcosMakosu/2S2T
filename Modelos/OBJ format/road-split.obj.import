@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://by1qdceyj7ncm"
+path="res://.godot/imported/road-split.obj-cb06e1904a9ee22c5a5dc894e3a5e86a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road-split.obj-cb06e1904a9ee22c5a5dc894e3a5e86a.mesh"]
+
+source_file="res://Modelos/OBJ format/road-split.obj"
+dest_files=["res://.godot/imported/road-split.obj-cb06e1904a9ee22c5a5dc894e3a5e86a.mesh", "res://.godot/imported/road-split.obj-cb06e1904a9ee22c5a5dc894e3a5e86a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
