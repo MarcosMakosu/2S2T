@@ -1,2 +1,5 @@
 res://node_3d.tscn
-res://Scrpts/camera_pivot.gd
+res://Scrpts/BotDifficultyResource.gd
+res://Scrpts/RacingBot.gd
+res://Scrpts/RaceManager.gd
+res://Scrpts/racing_bot.gd

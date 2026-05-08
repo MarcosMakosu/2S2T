@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b3jedexrchqnx" path="res://Scrpts/camera_pivot.gd" id="3_a0tk4"]
 [ext_resource type="ArrayMesh" uid="uid://bj68uirv5uhhq" path="res://Modelos/OBJ format/road-straight-half.obj" id="4_r3fl7"]
 [ext_resource type="ArrayMesh" uid="uid://cni4k6em4ek5s" path="res://Modelos/OBJ format/road-curve.obj" id="5_jka67"]
-[ext_resource type="Script" uid="uid://c8find3dbi3sj" path="res://Scrpts/racing_bot.gd" id="6_i5arm"]
+[ext_resource type="Script" uid="uid://c8find3dbi3sj" path="res://Scrpts/RacingBot.gd" id="6_i5arm"]
 [ext_resource type="Script" uid="uid://rqnd3mue1yc2" path="res://Scrpts/RaceManager.gd" id="7_wc5p8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
@@ -159,6 +159,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.0
 
 [node name="VehicleBody3D" type="VehicleBody3D" parent="bot" unique_id=550729570]
 script = ExtResource("6_i5arm")
+debug_draw = null
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="bot/VehicleBody3D" unique_id=2037152295]
 
