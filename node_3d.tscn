@@ -108,15 +108,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60910535, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="carro" type="CharacterBody3D" parent="." unique_id=1230427522]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.045, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.371139e-08, 1.045, -1)
 script = ExtResource("2_noarx")
+metadata/_edit_group_ = true
 
 [node name="Base" type="MeshInstance3D" parent="carro" unique_id=853299326]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.502, 0.7, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.045, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="carro" unique_id=485730256]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 1.230706, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.045, 0)
 shape = SubResource("BoxShape3D_a202f")
 
 [node name="camera_pivot" type="Node3D" parent="carro" unique_id=41790847 node_paths=PackedStringArray("car")]
@@ -216,24 +217,25 @@ mesh = ExtResource("4_r3fl7")
 shape = SubResource("ConcavePolygonShape3D_r3fl7")
 
 [node name="BotCarro" type="CharacterBody3D" parent="." unique_id=1052007564]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.121, 0.7, 1.356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.045, 1)
 script = ExtResource("6_i5arm")
 waypoints_path = NodePath("../Waypoints")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BotCarro" unique_id=252714417]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.045, 0)
 shape = SubResource("BoxShape3D_i5arm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BotCarro" unique_id=511301294]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="Waypoints" type="Node3D" parent="." unique_id=2051027536]
 
-[node name="WP" type="Node3D" parent="Waypoints" unique_id=1106808970]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+[node name="WP1" type="Node3D" parent="Waypoints" unique_id=1106808970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 script = ExtResource("7_wc5p8")
 
 [node name="WP2" type="Node3D" parent="Waypoints" unique_id=1412737544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.8, 0)
 script = ExtResource("7_wc5p8")
