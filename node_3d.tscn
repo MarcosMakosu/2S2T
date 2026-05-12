@@ -5,14 +5,17 @@
 [ext_resource type="Script" uid="uid://b3jedexrchqnx" path="res://Scrpts/camera_pivot.gd" id="3_a0tk4"]
 [ext_resource type="ArrayMesh" uid="uid://bj68uirv5uhhq" path="res://Modelos/OBJ format/road-straight-half.obj" id="4_r3fl7"]
 [ext_resource type="ArrayMesh" uid="uid://cni4k6em4ek5s" path="res://Modelos/OBJ format/road-curve.obj" id="5_jka67"]
-[ext_resource type="Script" uid="uid://c8find3dbi3sj" path="res://Scrpts/racing_bot.gd" id="6_i5arm"]
-[ext_resource type="Script" uid="uid://rqnd3mue1yc2" path="res://Scrpts/RaceManager.gd" id="7_wc5p8"]
+[ext_resource type="Script" uid="uid://b160m84sgq0et" path="res://Scrpts/bot_carro.gd" id="6_i5arm"]
+[ext_resource type="Script" uid="uid://d3nw343g45ipd" path="res://Scrpts/waypoint.gd" id="7_wc5p8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jsk3o"]
+data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
 sky_horizon_color = Color(0.05490196, 0.49803922, 1, 1)
@@ -37,8 +40,6 @@ fog_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
 size = Vector3(1.2, 1.1, 1.9)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5arm"]
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_i5arm"]
 vertices = PackedVector3Array(-137.25, 1.1, -80.75, -139.75, 1.1, -78.5, -141.25, 1.1, -76.5, -134.5, 1.1, -73.5, -131.5, 1.1, -75.75, -130.5, 1.1, -83.5, -134, 1.1, -82.5, -126.25, 1.1, -76.5, -126.25, 1.1, -83.5, -143.5, 1.1, -66.25, -136.5, 1.1, -66.25, -136.25, 1.1, -70, -143.25, 1.1, -71.75, 126.25, 1.1, -76.5, 126.25, 1.1, -83.5, 140.75, 1.1, -77.25, 138.5, 1.1, -79.75, 136.5, 1.1, -81.25, 133.5, 1.1, -74.5, 135.75, 1.1, -71.5, 143.5, 1.1, -70.5, 142.5, 1.1, -74, 136.5, 1.1, -66.25, 143.5, 1.1, -66.25, 130, 1.1, -76.25, 131.75, 1.1, -83.25, -143.5, 1.1, -13.75, -136.5, 1.1, -13.75, 136.5, 1.1, -13.75, 143.5, 1.1, -13.75, -141.25, 1.1, -3.5, -139.75, 1.1, -1.5, -137.25, 1.1, 0.75, -131.5, 1.1, -4.25, -134.5, 1.1, -6.5, -134, 1.1, 2.5, -130.5, 1.1, 3.5, -126.25, 1.1, 3.5, -126.25, 1.1, -3.5, -136.25, 1.1, -10, -143.25, 1.1, -8.25, 136.5, 1.1, 1.25, 138.5, 1.1, -0.25, 140.75, 1.1, -2.75, 135.75, 1.1, -8.5, 133.5, 1.1, -5.5, 142.5, 1.1, -6, 143.5, 1.1, -9.5, 130, 1.1, -3.75, 126.25, 1.1, -3.5, 126.25, 1.1, 3.5, 131.75, 1.1, 3.25)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 4), PackedInt32Array(4, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(3, 11, 2), PackedInt32Array(2, 11, 12), PackedInt32Array(8, 14, 7), PackedInt32Array(7, 14, 13), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(21, 20, 15), PackedInt32Array(15, 20, 19), PackedInt32Array(19, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(13, 14, 24), PackedInt32Array(24, 14, 25), PackedInt32Array(18, 24, 17), PackedInt32Array(17, 24, 25), PackedInt32Array(9, 10, 26), PackedInt32Array(26, 10, 27), PackedInt32Array(22, 23, 28), PackedInt32Array(28, 23, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 34), PackedInt32Array(32, 34, 33), PackedInt32Array(35, 32, 36), PackedInt32Array(36, 32, 33), PackedInt32Array(36, 33, 38), PackedInt32Array(36, 38, 37), PackedInt32Array(27, 39, 26), PackedInt32Array(26, 39, 40), PackedInt32Array(34, 30, 39), PackedInt32Array(39, 30, 40), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 45), PackedInt32Array(43, 45, 44), PackedInt32Array(46, 43, 47), PackedInt32Array(47, 43, 44), PackedInt32Array(47, 44, 28), PackedInt32Array(47, 28, 29), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 51), PackedInt32Array(45, 41, 48), PackedInt32Array(48, 41, 51), PackedInt32Array(38, 49, 37), PackedInt32Array(37, 49, 50)]
@@ -52,6 +53,8 @@ data = PackedVector3Array(-0.25, 0.01, -0.39999998, 0.25, 0.02, -0.39999998, 0.2
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i5arm"]
 data = PackedVector3Array(-0.25, 0.01, -0.39999998, 0.25, 0.02, -0.39999998, 0.25, 0.01, -0.39999998, 0.25, 0.02, -0.39999998, -0.25, 0.01, -0.39999998, -0.25, 0.02, -0.39999998, 0.25, 0, -0.5, -0.25, 0.02, -0.5, -0.25, 0, -0.5, -0.25, 0.02, -0.5, 0.25, 0, -0.5, 0.25, 0.02, -0.5, 0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, -0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, 0.25, 0.01, 0.39999998, 0.25, 0.02, 0.39999998, 0.25, 0, -0.5, -0.25, 0, 0.5, 0.25, 0, 0.5, -0.25, 0, 0.5, 0.25, 0, -0.5, -0.25, 0, -0.5, 0.25, 0.02, -0.39999998, -0.25, 0.02, -0.5, 0.25, 0.02, -0.5, -0.25, 0.02, -0.5, 0.25, 0.02, -0.39999998, -0.25, 0.02, -0.39999998, -0.25, 0, 0.5, 0.25, 0.02, 0.5, 0.25, 0, 0.5, 0.25, 0.02, 0.5, -0.25, 0, 0.5, -0.25, 0.02, 0.5, 0.25, 0.02, 0.5, -0.25, 0.02, 0.39999998, 0.25, 0.02, 0.39999998, -0.25, 0.02, 0.39999998, 0.25, 0.02, 0.5, -0.25, 0.02, 0.5, 0.25, 0.01, 0.39999998, 0.25, 0.02, 0.5, 0.25, 0.02, 0.39999998, 0.25, 0.01, 0.39999998, 0.25, 0, 0.5, 0.25, 0.02, 0.5, 0.25, 0.01, 0.29999998, 0.25, 0, 0.5, 0.25, 0.01, 0.39999998, 0.25, 0.01, 0.01, 0.25, 0, 0.5, 0.25, 0.01, 0.29999998, 0.25, 0.01, -0.01, 0.25, 0, 0.5, 0.25, 0.01, 0.01, 0.25, 0.01, -0.29999998, 0.25, 0, 0.5, 0.25, 0.01, -0.01, 0.25, 0.01, -0.39999998, 0.25, 0, 0.5, 0.25, 0.01, -0.29999998, 0.25, 0.01, -0.39999998, 0.25, 0, -0.5, 0.25, 0, 0.5, 0.25, 0.02, -0.39999998, 0.25, 0, -0.5, 0.25, 0.01, -0.39999998, 0.25, 0, -0.5, 0.25, 0.02, -0.39999998, 0.25, 0.02, -0.5, -0.25, 0, 0.5, -0.25, 0.02, 0.39999998, -0.25, 0.02, 0.5, -0.25, 0, 0.5, -0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, -0.25, 0, 0.5, -0.25, 0.01, 0.29999998, -0.25, 0.01, 0.39999998, -0.25, 0, 0.5, -0.25, 0.01, 0.01, -0.25, 0.01, 0.29999998, -0.25, 0, 0.5, -0.25, 0.01, -0.01, -0.25, 0.01, 0.01, -0.25, 0, 0.5, -0.25, 0.01, -0.29999998, -0.25, 0.01, -0.01, -0.25, 0, 0.5, -0.25, 0.01, -0.39999998, -0.25, 0.01, -0.29999998, -0.25, 0, -0.5, -0.25, 0.01, -0.39999998, -0.25, 0, 0.5, -0.25, 0.01, -0.39999998, -0.25, 0, -0.5, -0.25, 0.02, -0.5, -0.25, 0.02, -0.5, -0.25, 0.02, -0.39999998, -0.25, 0.01, -0.39999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.01, 0.25, 0.01, 0.29999998, 0.25, 0.01, 0.01, -0.25, 0.01, 0.29999998, -0.25, 0.01, 0.01, 0.25, 0.01, -0.01, -0.25, 0.01, -0.29999998, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.29999998, 0.25, 0.01, -0.01, -0.25, 0.01, -0.01, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.39999998, 0.25, 0.01, -0.39999998, -0.25, 0.01, -0.39999998, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.29999998, 0.25, 0.01, 0.39999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.29999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.39999998, -0.25, 0.01, 0.39999998, 0.25, 0.01, 0.01, -0.25, 0.01, -0.01, 0.25, 0.01, -0.01, -0.25, 0.01, -0.01, 0.25, 0.01, 0.01, -0.25, 0.01, 0.01, -0.25, 0.01, -0.39999998, 0.25, 0.02, -0.39999998, 0.25, 0.01, -0.39999998, 0.25, 0.02, -0.39999998, -0.25, 0.01, -0.39999998, -0.25, 0.02, -0.39999998, 0.25, 0, -0.5, -0.25, 0.02, -0.5, -0.25, 0, -0.5, -0.25, 0.02, -0.5, 0.25, 0, -0.5, 0.25, 0.02, -0.5, 0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, -0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, 0.25, 0.01, 0.39999998, 0.25, 0.02, 0.39999998, 0.25, 0, -0.5, -0.25, 0, 0.5, 0.25, 0, 0.5, -0.25, 0, 0.5, 0.25, 0, -0.5, -0.25, 0, -0.5, 0.25, 0.02, -0.39999998, -0.25, 0.02, -0.5, 0.25, 0.02, -0.5, -0.25, 0.02, -0.5, 0.25, 0.02, -0.39999998, -0.25, 0.02, -0.39999998, -0.25, 0, 0.5, 0.25, 0.02, 0.5, 0.25, 0, 0.5, 0.25, 0.02, 0.5, -0.25, 0, 0.5, -0.25, 0.02, 0.5, 0.25, 0.02, 0.5, -0.25, 0.02, 0.39999998, 0.25, 0.02, 0.39999998, -0.25, 0.02, 0.39999998, 0.25, 0.02, 0.5, -0.25, 0.02, 0.5, 0.25, 0.01, 0.39999998, 0.25, 0.02, 0.5, 0.25, 0.02, 0.39999998, 0.25, 0.01, 0.39999998, 0.25, 0, 0.5, 0.25, 0.02, 0.5, 0.25, 0.01, 0.29999998, 0.25, 0, 0.5, 0.25, 0.01, 0.39999998, 0.25, 0.01, 0.01, 0.25, 0, 0.5, 0.25, 0.01, 0.29999998, 0.25, 0.01, -0.01, 0.25, 0, 0.5, 0.25, 0.01, 0.01, 0.25, 0.01, -0.29999998, 0.25, 0, 0.5, 0.25, 0.01, -0.01, 0.25, 0.01, -0.39999998, 0.25, 0, 0.5, 0.25, 0.01, -0.29999998, 0.25, 0.01, -0.39999998, 0.25, 0, -0.5, 0.25, 0, 0.5, 0.25, 0.02, -0.39999998, 0.25, 0, -0.5, 0.25, 0.01, -0.39999998, 0.25, 0, -0.5, 0.25, 0.02, -0.39999998, 0.25, 0.02, -0.5, -0.25, 0, 0.5, -0.25, 0.02, 0.39999998, -0.25, 0.02, 0.5, -0.25, 0, 0.5, -0.25, 0.01, 0.39999998, -0.25, 0.02, 0.39999998, -0.25, 0, 0.5, -0.25, 0.01, 0.29999998, -0.25, 0.01, 0.39999998, -0.25, 0, 0.5, -0.25, 0.01, 0.01, -0.25, 0.01, 0.29999998, -0.25, 0, 0.5, -0.25, 0.01, -0.01, -0.25, 0.01, 0.01, -0.25, 0, 0.5, -0.25, 0.01, -0.29999998, -0.25, 0.01, -0.01, -0.25, 0, 0.5, -0.25, 0.01, -0.39999998, -0.25, 0.01, -0.29999998, -0.25, 0, -0.5, -0.25, 0.01, -0.39999998, -0.25, 0, 0.5, -0.25, 0.01, -0.39999998, -0.25, 0, -0.5, -0.25, 0.02, -0.5, -0.25, 0.02, -0.5, -0.25, 0.02, -0.39999998, -0.25, 0.01, -0.39999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.01, 0.25, 0.01, 0.29999998, 0.25, 0.01, 0.01, -0.25, 0.01, 0.29999998, -0.25, 0.01, 0.01, 0.25, 0.01, -0.01, -0.25, 0.01, -0.29999998, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.29999998, 0.25, 0.01, -0.01, -0.25, 0.01, -0.01, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.39999998, 0.25, 0.01, -0.39999998, -0.25, 0.01, -0.39999998, 0.25, 0.01, -0.29999998, -0.25, 0.01, -0.29999998, 0.25, 0.01, 0.39999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.29999998, -0.25, 0.01, 0.29999998, 0.25, 0.01, 0.39999998, -0.25, 0.01, 0.39999998, 0.25, 0.01, 0.01, -0.25, 0.01, -0.01, 0.25, 0.01, -0.01, -0.25, 0.01, -0.01, 0.25, 0.01, 0.01, -0.25, 0.01, 0.01)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
+
 [node name="Mundo" type="Node3D" unique_id=1206941895]
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=774928053]
@@ -63,6 +66,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2050176630]
 shape = SubResource("BoxShape3D_noarx")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Floor" unique_id=543633976]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D2" unique_id=1337565237]
+shape = SubResource("ConcavePolygonShape3D_jsk3o")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123984790]
 environment = SubResource("Environment_a202f")
@@ -104,7 +112,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 script = ExtResource("2_noarx")
 
 [node name="Base" type="MeshInstance3D" parent="carro" unique_id=853299326]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.60910535, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.502, 0.7, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="carro" unique_id=485730256]
@@ -121,56 +129,6 @@ pivot_distance = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="carro/camera_pivot/SpringArm3D" unique_id=757432451]
 current = true
-
-[node name="Checkpoint" type="Node3D" parent="." unique_id=1711964756 groups=["checkpoints"]]
-
-[node name="Checkpoint1" type="Node3D" parent="Checkpoint" unique_id=1304588361 groups=["checkpoints"]]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, -134.03625, 1.3057911, -0.41247982)
-
-[node name="Label3D" type="Label3D" parent="Checkpoint/Checkpoint1" unique_id=720314798]
-pixel_size = 21.2224
-
-[node name="Checkpoint2" type="Node3D" parent="Checkpoint" unique_id=217066555 groups=["checkpoints"]]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, -139.49011, 1.3057911, -74.59406)
-
-[node name="Label3D" type="Label3D" parent="Checkpoint/Checkpoint2" unique_id=2086358697]
-pixel_size = 21.2224
-
-[node name="Checkpoint3" type="Node3D" parent="Checkpoint" unique_id=1293678632 groups=["checkpoints"]]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 131.13116, 1.3057911, -79.748)
-
-[node name="Label3D" type="Label3D" parent="Checkpoint/Checkpoint3" unique_id=444628]
-pixel_size = 21.2224
-
-[node name="Checkpoint4" type="Node3D" parent="Checkpoint" unique_id=315990564 groups=["checkpoints"]]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 139.81285, 1.3057911, -3.205555)
-
-[node name="Label3D" type="Label3D" parent="Checkpoint/Checkpoint4" unique_id=1069714763]
-pixel_size = 21.2224
-
-[node name="Checkpoint5" type="Node3D" parent="Checkpoint" unique_id=1360791886 groups=["checkpoints"]]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0.89307785, 1.3057911, -0.23911476)
-
-[node name="Label3D" type="Label3D" parent="Checkpoint/Checkpoint5" unique_id=775300380]
-pixel_size = 21.2224
-
-[node name="bot" type="Node3D" parent="." unique_id=2143284295 groups=["bots"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.02316505e-07, 0.9077756, -1.1703644)
-
-[node name="VehicleBody3D" type="VehicleBody3D" parent="bot" unique_id=550729570]
-script = ExtResource("6_i5arm")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="bot/VehicleBody3D" unique_id=2037152295]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bot/VehicleBody3D" unique_id=1741041717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.196086, 1.8343637, -3.0475883)
-shape = SubResource("CapsuleShape3D_i5arm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="bot/VehicleBody3D" unique_id=46573620]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.241, 0.045, -1.387)
-mesh = ExtResource("1_a202f")
-
-[node name="VehicleWheel3D" type="VehicleWheel3D" parent="bot/VehicleBody3D" unique_id=738914057]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=677920515]
 navigation_mesh = SubResource("NavigationMesh_i5arm")
@@ -257,5 +215,25 @@ mesh = ExtResource("4_r3fl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/RoadStraightHalf2/StaticBody3D" unique_id=958687601]
 shape = SubResource("ConcavePolygonShape3D_r3fl7")
 
-[node name="RaceManager" type="Node" parent="." unique_id=1625317865 groups=["race_manager"]]
+[node name="BotCarro" type="CharacterBody3D" parent="." unique_id=1052007564]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.121, 0.7, 1.356)
+script = ExtResource("6_i5arm")
+waypoints_path = NodePath("../Waypoints")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BotCarro" unique_id=252714417]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_i5arm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BotCarro" unique_id=511301294]
+mesh = ExtResource("1_a202f")
+
+[node name="Waypoints" type="Node3D" parent="." unique_id=2051027536]
+
+[node name="WP" type="Node3D" parent="Waypoints" unique_id=1106808970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+script = ExtResource("7_wc5p8")
+
+[node name="WP2" type="Node3D" parent="Waypoints" unique_id=1412737544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.7, 0)
 script = ExtResource("7_wc5p8")

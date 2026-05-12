@@ -1,5 +1,4 @@
 res://node_3d.tscn
-res://Scrpts/BotDifficultyResource.gd
-res://Scrpts/RacingBot.gd
-res://Scrpts/RaceManager.gd
-res://Scrpts/racing_bot.gd
+res://Scrpts/carro.gd
+res://Scrpts/bot_carro.gd
+res://Scrpts/waypoint.gd
