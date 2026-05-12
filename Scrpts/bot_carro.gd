@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-# === Mesmas propriedades do carro jogável ===
+# === Propriedades de Movimento (Igual ao seu Player) ===
+@export_group("Física do Carro")
 @export var max_speed := 20.0
 @export var aceleracao := 10.0
 @export var frenagem := 15.0
@@ -9,22 +10,25 @@ extends CharacterBody3D
 @export var gravidade := 9.8
 
 # === Configurações da IA ===
+@export_group("Configurações da IA")
 @export var dificuldade := 1.0          # 0.5 = fácil, 1.0 = normal, 1.5 = difícil
-@export var distancia_waypoint := 3.0   # distância para considerar waypoint alcançado
-@export var waypoints_path: NodePath    # arraste o nó pai dos waypoints aqui no editor
+@export var distancia_waypoint := 4.0   # Raio de detecção do ponto
+@export var waypoints_path: NodePath    # Arraste o nó pai dos waypoints aqui
 
 var velocidade_atual := 0.0
 var waypoints: Array = []
 var waypoint_atual := 0
 
 func _ready():
-	# Pega todos os waypoints filhos do nó indicado
+	# Inicializa a lista de waypoints
 	var container = get_node_or_null(waypoints_path)
 	if container:
 		for filho in container.get_children():
-			waypoints.append(filho)
-	else:
-		push_warning("BotCarro: waypoints_path não definido ou inválido!")
+			if filho is Node3D:
+				waypoints.append(filho)
+	
+	if waypoints.size() == 0:
+		push_warning("BotCarro: Nenhum waypoint encontrado! Verifique o waypoints_path.")
 
 func _physics_process(delta):
 	# --- Gravidade ---
@@ -33,58 +37,54 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0.0
 
+	# Se não houver caminho, o bot não se move
 	if waypoints.size() == 0:
 		move_and_slide()
 		return
 
+	# --- Lógica de Navegação ---
 	var alvo: Node3D = waypoints[waypoint_atual]
 	var direcao_alvo = (alvo.global_position - global_position)
-	direcao_alvo.y = 0.0  # ignora diferença vertical
+	direcao_alvo.y = 0.0 # Ignora altura para o cálculo de direção
 
-	# --- Verifica se chegou no waypoint ---
+	# Verifica se chegou no ponto atual para focar no próximo
 	if direcao_alvo.length() < distancia_waypoint:
 		waypoint_atual = (waypoint_atual + 1) % waypoints.size()
+		return
 
-	# --- Calcula o quanto precisa girar ---
-	var frente = -transform.basis.z
-	frente.y = 0.0
-	frente = frente.normalized()
+	# --- Cálculo de Direção (Onde o bot precisa olhar) ---
+	var frente_carro = -global_transform.basis.z # Na Godot, -Z é a frente
+	frente_carro.y = 0
 	var dir_norm = direcao_alvo.normalized()
 
-	# Produto cruzado para saber se vira esquerda ou direita
-	var cross = frente.cross(dir_norm).y
-	# Produto escalar para saber se o alvo está na frente ou atrás
-	var dot = frente.dot(dir_norm)
+	# Calcula o ângulo necessário para encarar o alvo
+	var angulo_para_alvo = frente_carro.signed_angle_to(dir_norm, Vector3.UP)
 
-	# --- Aceleração com dificuldade aplicada ---
-	var velocidade_max_ajustada = max_speed * dificuldade
+	# --- Controle de Velocidade ---
+	var vel_max_ia = max_speed * dificuldade
 
 	if is_on_floor():
-		# Freia em curvas fechadas
-		var fator_curva = clamp(abs(cross), 0.0, 1.0)
-		if dot > 0.2:
-			# Reduz velocidade proporcional à curva
-			var vel_alvo = lerp(velocidade_max_ajustada, velocidade_max_ajustada * 0.4, fator_curva)
-			if velocidade_atual < vel_alvo:
-				velocidade_atual += aceleracao * dificuldade * delta
-			else:
-				velocidade_atual = move_toward(velocidade_atual, vel_alvo, frenagem * delta)
-		else:
-			# Alvo atrás: freia forte e vai devagar
+		# Se o alvo estiver muito "atrás" (curva muito fechada), ele freia
+		if abs(angulo_para_alvo) > 1.5: # Aproximadamente 85-90 graus
 			velocidade_atual = move_toward(velocidade_atual, 2.0, frenagem * delta)
-
-	# Limite de velocidade
-	velocidade_atual = clamp(velocidade_atual, 0.0, velocidade_max_ajustada)
-
-	# --- Rotação suave em direção ao waypoint ---
+		else:
+			# Acelera até o limite da dificuldade
+			if velocidade_atual < vel_max_ia:
+				velocidade_atual += aceleracao * dificuldade * delta
+	
+	# Aplica fricção se não estiver acelerando (segurança)
+	if velocidade_atual > 0:
+		velocidade_atual = clamp(velocidade_atual, 0.0, vel_max_ia)
+	
+	# --- Aplica a Rotação ---
 	if is_on_floor() and abs(velocidade_atual) > 0.1:
-		# Intensidade do giro proporcional ao erro angular
-		var intensidade = clamp(abs(cross) * 2.0, 0.0, 1.0)
-		rotate_y(-sign(cross) * giro * intensidade * dificuldade * delta)
+		# Suaviza o giro baseado na variável 'giro'
+		var forca_giro = clamp(angulo_para_alvo, -giro * delta, giro * delta)
+		rotate_y(forca_giro)
 
-	# --- Movimento ---
-	var direcao_frente = -transform.basis.z
-	velocity.x = direcao_frente.x * velocidade_atual
-	velocity.z = direcao_frente.z * velocidade_atual
+	# --- Movimento Final ---
+	var direcao_movimento = -global_transform.basis.z
+	velocity.x = direcao_movimento.x * velocidade_atual
+	velocity.z = direcao_movimento.z * velocidade_atual
 
 	move_and_slide()

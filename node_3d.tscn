@@ -219,6 +219,7 @@ shape = SubResource("ConcavePolygonShape3D_r3fl7")
 [node name="BotCarro" type="CharacterBody3D" parent="." unique_id=1052007564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.045, 1)
 script = ExtResource("6_i5arm")
+distancia_waypoint = 8.0
 waypoints_path = NodePath("../Waypoints")
 metadata/_edit_group_ = true
 
@@ -233,9 +234,13 @@ mesh = ExtResource("1_a202f")
 [node name="Waypoints" type="Node3D" parent="." unique_id=2051027536]
 
 [node name="WP1" type="Node3D" parent="Waypoints" unique_id=1106808970]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2411103, 0.8, 0)
 script = ExtResource("7_wc5p8")
 
 [node name="WP2" type="Node3D" parent="Waypoints" unique_id=1412737544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.484332, 0.8, 0)
+script = ExtResource("7_wc5p8")
+
+[node name="WP3" type="Node3D" parent="Waypoints" unique_id=319565801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.484333, 0.8, 0)
 script = ExtResource("7_wc5p8")
