@@ -217,7 +217,7 @@ mesh = ExtResource("4_r3fl7")
 shape = SubResource("ConcavePolygonShape3D_r3fl7")
 
 [node name="BotCarro" type="CharacterBody3D" parent="." unique_id=1052007564]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.045, 1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.045, 1)
 script = ExtResource("6_i5arm")
 distancia_waypoint = 8.0
 waypoints_path = NodePath("../Waypoints")
@@ -228,7 +228,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.045, 0)
 shape = SubResource("BoxShape3D_i5arm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BotCarro" unique_id=511301294]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("1_a202f")
 
 [node name="Waypoints" type="Node3D" parent="." unique_id=2051027536]
@@ -238,9 +238,73 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2411103, 0.8, 0)
 script = ExtResource("7_wc5p8")
 
 [node name="WP2" type="Node3D" parent="Waypoints" unique_id=1412737544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.484332, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.18402, 0.8, 0)
 script = ExtResource("7_wc5p8")
 
 [node name="WP3" type="Node3D" parent="Waypoints" unique_id=319565801]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.484333, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.990555, 0.8, 0)
+script = ExtResource("7_wc5p8")
+
+[node name="WP4" type="Node3D" parent="Waypoints" unique_id=1433268842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.79562, 0.8, -5.850065)
+script = ExtResource("7_wc5p8")
+
+[node name="WP5" type="Node3D" parent="Waypoints" unique_id=1973011550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.79562, 0.8, -20.999243)
+script = ExtResource("7_wc5p8")
+
+[node name="WP6" type="Node3D" parent="Waypoints" unique_id=913975982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.79562, 0.8, -68.50233)
+script = ExtResource("7_wc5p8")
+
+[node name="WP7" type="Node3D" parent="Waypoints" unique_id=1916829775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.67758, 0.8, -79.004486)
+script = ExtResource("7_wc5p8")
+
+[node name="WP8" type="Node3D" parent="Waypoints" unique_id=1318791903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.87451, 0.8, -81.590454)
+script = ExtResource("7_wc5p8")
+
+[node name="WP9" type="Node3D" parent="Waypoints" unique_id=924452983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.46264, 0.8, -81.590454)
+script = ExtResource("7_wc5p8")
+
+[node name="WP10" type="Node3D" parent="Waypoints" unique_id=1680725379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6529, 0.8, -81.590454)
+script = ExtResource("7_wc5p8")
+
+[node name="WP11" type="Node3D" parent="Waypoints" unique_id=1449391647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.70406, 0.8, -81.590454)
+script = ExtResource("7_wc5p8")
+
+[node name="WP12" type="Node3D" parent="Waypoints" unique_id=1952329907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.46536, 0.8, -76.28762)
+script = ExtResource("7_wc5p8")
+
+[node name="WP13" type="Node3D" parent="Waypoints" unique_id=776688481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.25255, 0.8, -60.877735)
+script = ExtResource("7_wc5p8")
+
+[node name="WP14" type="Node3D" parent="Waypoints" unique_id=688778798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.28058, 0.8, -14.936649)
+script = ExtResource("7_wc5p8")
+
+[node name="WP15" type="Node3D" parent="Waypoints" unique_id=991023782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.00885, 0.8, -2.2355537)
+script = ExtResource("7_wc5p8")
+
+[node name="WP16" type="Node3D" parent="Waypoints" unique_id=252758641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.78552, 0.8, -0.73891306)
+script = ExtResource("7_wc5p8")
+
+[node name="WP17" type="Node3D" parent="Waypoints" unique_id=588881764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.94621, 0.8, -0.73891306)
+script = ExtResource("7_wc5p8")
+
+[node name="WP18" type="Node3D" parent="Waypoints" unique_id=541211517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.596596, 0.8, -0.73891306)
+script = ExtResource("7_wc5p8")
+
+[node name="WP19" type="Node3D" parent="Waypoints" unique_id=1485820769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9634018, 0.8, -0.73891306)
 script = ExtResource("7_wc5p8")
